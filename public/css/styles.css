@@ -1,5 +1,14 @@
 h1{
-	background-color: blue;
+	background-color: darkred;
 	text-align: center;
-	padding-top; 10px;
+	color: white;
+	font-family: Helvetica;
+	height: 40px;
+	margin: 0;
+	padding: 5px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
