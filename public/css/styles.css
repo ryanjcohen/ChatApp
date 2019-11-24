@@ -3,12 +3,38 @@ h1{
 	text-align: center;
 	color: white;
 	font-family: Helvetica;
+	font-size: 35px;
 	height: 40px;
 	margin: 0;
 	padding: 5px;
+	border-color: black;
 }
 
 html, body {
   margin: 0;
   padding: 0;
+}
+
+form{
+	bottom: 0;
+	position: fixed;
+	border-color: darkred;
+	width: 100%;
+}
+
+.submit{
+	position: absolute;
+	right: 0px;
+	width: 10%;
+	font-size: 20px;
+	height: 100%;
+	background-color: darkred;
+	color: white;
+	border-color:black;
+}
+
+.text{
+	width: 90%;
+	font-size: 20px;
+	border-color: black;
 }
