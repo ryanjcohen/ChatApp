@@ -16,6 +16,12 @@
  	<script>
  		var socket = io.connect('http://localhost:8000');
  		
+ 		socket.on("message", function(message){
+			$("#log").append($('<br>'));
+			$("#log").append($('<li>').html(message));
+			$("#log").append($('<br>'));
+		});
+
  		$("form").submit(function(e){
 			e.preventDefault();
 			socket.emit("chat message", $("#message").val());
@@ -23,12 +29,6 @@
 			return false;
 		});
 
-		socket.on("chat message", function(message){
-			console.log("yes");
-			$("#log").append($('<br>'));
-			$("#log").append($('<li>').html(message));
-			$("#log").append($('<br>'));
-		});
  	</script>
  </body>
  </html>
