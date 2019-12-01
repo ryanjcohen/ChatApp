@@ -7,7 +7,9 @@ h1{
 	height: 40px;
 	margin: 0;
 	padding: 5px;
-	border-color: black;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 html, body {
@@ -20,6 +22,7 @@ form{
 	position: fixed;
 	border-color: darkred;
 	width: 100%;
+	padding: 0px;
 }
 
 .submit{
@@ -38,3 +41,24 @@ form{
 	font-size: 20px;
 	border-color: black;
 }
+
+.messages{
+	color: black;
+}
+
+ul{
+	padding-top: 40px;
+	list-style: none;
+}
+
+li{
+	display: inline-block;
+	background: #DCDCDC;
+	color: black;
+	width: auto;
+	font-family: Helvetica;
+	padding: 5px 10px 5px 10px;
+	border-radius: 25px;
+}
+
+

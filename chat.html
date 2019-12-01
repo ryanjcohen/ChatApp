@@ -8,18 +8,26 @@
 </head> 
  <body>    
  	<h1>ChatApp</h1> 
+ 	<ul id = 'log'></ul>
  	<form id="form" type = "form">
  		<input id = "message" class = "text" type = "text" placeholder= "Insert message here">
  		<button id = "submit" class="submit">Send</button>
  	</form>
  	<script>
  		var socket = io.connect('http://localhost:8000');
+ 		
  		$("form").submit(function(e){
-			console.log("YAY");
 			e.preventDefault();
 			socket.emit("chat message", $("#message").val());
 			$("#message").val("");
 			return false;
+		});
+
+		socket.on("chat message", function(message){
+			console.log("yes");
+			$("#log").append($('<br>'));
+			$("#log").append($('<li>').html(message));
+			$("#log").append($('<br>'));
 		});
  	</script>
  </body>

@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express();
-var http = require('http').createServer(app);
+var http = require('http').Server(app);
 var path = require("path");
-var io = require("socket.io")(http);
+var io = require("socket.io");
 
 app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname, '/chat.html'));
@@ -10,10 +10,16 @@ app.get('/', function(req, res){
 
 app.use(express.static(path.join(__dirname, "public")));
 
-io.on('connection', function(socket){
+var socket = io(http);
+
+socket.on("connection", socket =>{
 	console.log("user connected");
-	socket.on('disconnect',function(){
-		console.log('user disconnected');
+
+	socket.on("chat message", function(msg){
+
+		console.log("chat message: " + msg);
+
+		socket.emit("chat message", msg);
 	});
 });
 
