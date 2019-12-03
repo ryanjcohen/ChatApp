@@ -11,8 +11,6 @@ app.get('/', function(req, res){
 
 app.use(express.static(path.join(__dirname, "public")));
 
-//var socket = io(http);
-
 io.sockets.on("connection", socket =>{
 	console.log("user connected");
 
