@@ -18,16 +18,13 @@
  		var usernames = [];
  		var name;
 
- 		socket.on("share names", async function(names){
- 			console.log(names);
- 			usernames = await names;
- 			console.log(usernames);
+ 		socket.on("share names", function(names){
+ 			usernames = names;
  			name = prompt("Please enter a username");
- 			console.log(name);
  			verify_name();
  		});
  		
- 		async function verify_name(){
+ 		function verify_name(){
 			while(true){
 				while(name == "" || name == "null"){
 				 	name = prompt("Invalid username. Please try again");
