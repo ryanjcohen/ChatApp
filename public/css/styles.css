@@ -61,4 +61,14 @@ li{
 	border-radius: 25px;
 }
 
+.mine{
+	display: inline-block;
+	background: darkred;
+	color: white;
+	width: auto;
+	font-family: Helvetica;
+	padding: 5px 10px 5px 10px;
+	border-radius: 25px;
+}
+
 

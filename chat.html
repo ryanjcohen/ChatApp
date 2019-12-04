@@ -14,17 +14,28 @@
  		<button id = "submit" class="submit">Send</button>
  	</form>
  	<script>
+ 		var name = prompt("Please enter a username");
+ 		
+ 		/* TO DO: CHECK FOR UNIQUE USERNAMES */
+ 		while(name == "" || name == "null"){
+ 			var name = prompt("Invalid username. Please try again");
+ 		}
+
  		var socket = io.connect('http://localhost:8000');
  		
  		socket.on("message", function(message){
 			$("#log").append($('<br>'));
-			$("#log").append($('<li>').html(message));
+			if(message.includes(name)){
+				$("#log").append($('<li class = "mine" >').html(message));
+			}else{
+				$("#log").append($('<li>').html(message));
+			}
 			$("#log").append($('<br>'));
 		});
 
  		$("form").submit(function(e){
 			e.preventDefault();
-			socket.emit("chat message", $("#message").val());
+			socket.emit("chat message", "<b>" + name + ": </b>" + $("#message").val());
 			$("#message").val("");
 			return false;
 		});
