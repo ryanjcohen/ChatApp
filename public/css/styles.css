@@ -20,6 +20,7 @@ html, body {
 form{
 	bottom: 0;
 	position: fixed;
+	position: inline;
 	border-color: darkred;
 	width: 100%;
 	padding: 0px;
@@ -48,6 +49,7 @@ form{
 
 ul{
 	padding-top: 40px;
+	padding-bottom: 30px;
 	list-style: none;
 }
 
@@ -69,6 +71,11 @@ li{
 	font-family: Helvetica;
 	padding: 5px 10px 5px 10px;
 	border-radius: 25px;
+}
+
+.message_log{
+	height: 90%;
+}
 }
 
 

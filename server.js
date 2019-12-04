@@ -11,8 +11,14 @@ app.get('/', function(req, res){
 
 app.use(express.static(path.join(__dirname, "public")));
 
+var names = [""];
+
 io.sockets.on("connection", function(socket){
 	console.log("user connected");
+	socket.emit("share names", names);
+	socket.on("share name", function(name){
+		names.push(name);
+	});
 
 	socket.on("chat message", function(msg){
 		console.log("chat message: " + msg);

@@ -14,22 +14,57 @@
  		<button class="submit">Send</button>
  	</form>
  	<script>
- 		var name = prompt("Please enter a username");
- 		
- 		/* TO DO: CHECK FOR UNIQUE USERNAMES */
- 		while(name == "" || name == "null"){
- 			var name = prompt("Invalid username. Please try again");
- 		}
-
  		var socket = io.connect('http://localhost:8000');
+ 		var usernames = [];
+ 		var name;
+
+ 		socket.on("share names", async function(names){
+ 			console.log(names);
+ 			usernames = await names;
+ 			console.log(usernames);
+ 			name = prompt("Please enter a username");
+ 			console.log(name);
+ 			verify_name();
+ 		});
+ 		
+ 		async function verify_name(){
+			while(true){
+				while(name == "" || name == "null"){
+				 	name = prompt("Invalid username. Please try again");
+				}
+				console.log(usernames.includes(name));
+				if(usernames.includes(name)){
+					name = prompt("Username already in use. Please enter another username");
+				}else{
+					socket.emit("share name", name);
+					break;
+				}
+			}
+		}
+
+		
+
+		/*async function server_name_check(name){
+		 	socket.emit("name check", name);
+		 	await socket.on("name status", function(status){
+		 		if(status == "unused"){
+					return true;
+		 		}else{
+		 			return false;
+		 		}
+		 	});
+	 	}*/
+ 		
  		
  		socket.on("message", function(message){
 			$("#log").append($('<br>'));
-			if(message.includes("<b>" + name)){
+			
+			if(message.includes("<b>" + name + ": </b>")){
 				$("#log").append($('<li class = "mine" >').html(message));
 			}else{
 				$("#log").append($('<li>').html(message));
 			}
+
 			$("#log").append($('<br>'));
 		});
 
