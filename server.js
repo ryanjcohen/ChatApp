@@ -11,20 +11,25 @@ app.get('/', function(req, res){
 
 app.use(express.static(path.join(__dirname, "public")));
 
-var names = [""];
+var names = [];
 
 io.sockets.on("connection", function(socket){
 	console.log("user connected");
 	socket.emit("share names", names);
 	socket.on("share name", function(name){
+		socket.userId = name;
 		names.push(name);
 	});
 
 	socket.on("chat message", function(msg){
-		console.log("chat message: " + msg);
-
 		io.emit("message", msg);
 	});
+
+	socket.on("disconnect", function(){
+		var nameIndex = names.indexOf(socket.userId)
+		names.splice(nameIndex, 1);
+	});
+
 });
 
 http.listen(8000);
