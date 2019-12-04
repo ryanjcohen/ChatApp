@@ -1,3 +1,3 @@
 # ChatApp
 
-(In progress) Web application for instant messaging between users.
+(In progress) Web application for real-time messaging between users.
