@@ -9,9 +9,9 @@
  <body>    
  	<h1>ChatApp</h1> 
  	<ul id = 'log'></ul>
- 	<form id="form" type = "form">
- 		<input id = "message" class = "text" type = "text" placeholder= "Insert message here">
- 		<button id = "submit" class="submit">Send</button>
+ 	<form id="form">
+ 		<input id = "message" class = "text" placeholder= "Insert message here">
+ 		<button class="submit">Send</button>
  	</form>
  	<script>
  		var name = prompt("Please enter a username");
@@ -25,7 +25,7 @@
  		
  		socket.on("message", function(message){
 			$("#log").append($('<br>'));
-			if(message.includes(name)){
+			if(message.includes("<b>" + name)){
 				$("#log").append($('<li class = "mine" >').html(message));
 			}else{
 				$("#log").append($('<li>').html(message));
