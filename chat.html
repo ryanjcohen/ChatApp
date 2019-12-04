@@ -39,20 +39,6 @@
 			}
 		}
 
-		
-
-		/*async function server_name_check(name){
-		 	socket.emit("name check", name);
-		 	await socket.on("name status", function(status){
-		 		if(status == "unused"){
-					return true;
-		 		}else{
-		 			return false;
-		 		}
-		 	});
-	 	}*/
- 		
- 		
  		socket.on("message", function(message){
 			$("#log").append($('<br>'));
 			
