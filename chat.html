@@ -8,7 +8,13 @@
 </head> 
  <body>    
  	<h1>ChatApp</h1> 
- 	<ul id = 'log'></ul>
+ 	<div class = 'message_log'>
+ 		<ul id = 'log' class = 'log'></ul>
+ 	</div>
+ 	<div class = 'active_users'>
+ 		<h2>Active users:</h2>
+ 		<ul id = 'user_list' class = 'users'></ul>
+ 	</div>
  	<form id="form">
  		<input id = "message" class = "text" placeholder= "Insert message here">
  		<button class="submit">Send</button>
@@ -26,28 +32,46 @@
  		
  		function verify_name(){
 			while(true){
-				while(name == "" || name == "null"){
+				while(name == "" || name == "null" || name.charAt(0) == ' '){
 				 	name = prompt("Invalid username. Please try again");
 				}
 				if(usernames.includes(name)){
 					name = prompt("Username already in use. Please enter another username");
 				}else{
 					socket.emit("share name", name);
+					user_updates();
 					break;
 				}
 			}
 		}
 
+		function user_updates(){
+			for (let i = 0; i < usernames.length; i++){
+				$("#user_list").append($('<li>').html('<span class="dot"></span>' +usernames[i]));
+			}
+		}
+		
+		socket.on("name update", function(new_name){
+			$("#user_list").append($('<li>').html('<span class="dot"></span>' + new_name));
+		});
+
+		socket.on("remove name", function(name){
+			$('ul#user_list li:contains(' + name + ')').remove();
+		});
+ 		
  		socket.on("message", function(message){
+			
 			$("#log").append($('<br>'));
 			
 			if(message.includes("<b>" + name + ": </b>")){
 				$("#log").append($('<li class = "mine" >').html(message));
 			}else{
-				$("#log").append($('<li>').html(message));
+				$("#log").append($('<li class = "other_user" >').html(message));
 			}
 
 			$("#log").append($('<br>'));
+
+			console.log($("log").length);
 		});
 
  		$("form").submit(function(e){

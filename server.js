@@ -15,10 +15,14 @@ var names = [];
 
 io.sockets.on("connection", function(socket){
 	console.log("user connected");
+	
 	socket.emit("share names", names);
+	
 	socket.on("share name", function(name){
 		socket.userId = name;
 		names.push(name);
+		
+		socket.broadcast.emit("name update", name);
 	});
 
 	socket.on("chat message", function(msg){
@@ -26,8 +30,10 @@ io.sockets.on("connection", function(socket){
 	});
 
 	socket.on("disconnect", function(){
-		var nameIndex = names.indexOf(socket.userId)
+		var name = socket.userId;
+		var nameIndex = names.indexOf(name)
 		names.splice(nameIndex, 1);
+		socket.broadcast.emit("remove name", name);
 	});
 
 });
