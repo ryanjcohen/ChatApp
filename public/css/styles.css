@@ -102,14 +102,22 @@ h2{
 	background-color: #d3d3d3;
 }
 
-.dot {
-  height: 12px;
-  width: 12px;
-  margin-right: 5px;
-  background-color: green;
-  border-radius: 50%;
-  display: inline-block;
+.dot{
+	height: 12px;
+	width: 12px;
+	margin-right: 5px;
+	background-color: green;
+	border-radius: 50%;
+	display: inline-block;
 }
 
+.user_update{
+	color: black;
+	width: auto;
+	font-family: Helvetica;
+	font-style: italic;
+	word-break: break-all;
+
+}
 
 

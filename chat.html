@@ -39,13 +39,14 @@
 					name = prompt("Username already in use. Please enter another username");
 				}else{
 					socket.emit("share name", name);
-					user_updates();
+					initialize_users();
 					break;
 				}
 			}
 		}
 
-		function user_updates(){
+		function initialize_users(){
+			console.log(usernames);
 			for (let i = 0; i < usernames.length; i++){
 				$("#user_list").append($('<li>').html('<span class="dot"></span>' +usernames[i]));
 			}
@@ -53,10 +54,16 @@
 		
 		socket.on("name update", function(new_name){
 			$("#user_list").append($('<li>').html('<span class="dot"></span>' + new_name));
+
+			$("#log").append($('<br>'));
+			$("#log").append($('<li class = "user_update" >').html(new_name + " has entered the chat."));
 		});
 
 		socket.on("remove name", function(name){
 			$('ul#user_list li:contains(' + name + ')').remove();
+
+			$("#log").append($('<br>'));
+			$("#log").append($('<li class = "user_update" >').html(name + " has left the chat."));
 		});
  		
  		socket.on("message", function(message){
@@ -70,8 +77,6 @@
 			}
 
 			$("#log").append($('<br>'));
-
-			console.log($("log").length);
 		});
 
  		$("form").submit(function(e){
