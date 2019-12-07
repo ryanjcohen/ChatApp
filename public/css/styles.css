@@ -6,7 +6,7 @@ h1{
 	font-size: 35px;
 	height: 8%;
 	margin: 0;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	width: 100%;
 }
@@ -45,6 +45,10 @@ form{
 .message_log{
 	float: left;
 	width: 85%;
+	overflow: scroll;
+	padding: 0px;
+	height: 92%;
+	overflow: auto;
 }
 
 .log{
@@ -79,7 +83,7 @@ form{
 	float: right;
 	width: 12%;
 	background-color: #d3d3d3;
-	position: absolute;
+	position: fixed;
 	right: 0;
 	bottom: 0;
 	height: 92%;
@@ -87,7 +91,7 @@ form{
 
 h2{
 	font-family: Helvetica;
-	padding-left: 0px;
+	padding-top: 0px;
 	text-align: center;
 	padding-bottom: 0px;
 	margin-bottom: 0px;

@@ -15,7 +15,7 @@
  		<h2>Active users:</h2>
  		<ul id = 'user_list' class = 'users'></ul>
  	</div>
- 	<form id="form">
+ 	<form id="form" onsubmit = "return false;">
  		<input id = "message" class = "text" placeholder= "Insert message here">
  		<button class="submit">Send</button>
  	</form>
@@ -61,9 +61,11 @@
 
 		socket.on("remove name", function(name){
 			$('ul#user_list li:contains(' + name + ')').remove();
-
-			$("#log").append($('<br>'));
-			$("#log").append($('<li class = "user_update" >').html(name + " has left the chat."));
+			
+			if(name != null){
+				$("#log").append($('<br>'));
+				$("#log").append($('<li class = "user_update" >').html(name + " has left the chat."));
+			}
 		});
  		
  		socket.on("message", function(message){
