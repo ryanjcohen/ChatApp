@@ -4,10 +4,9 @@ h1{
 	color: white;
 	font-family: Helvetica;
 	font-size: 35px;
-	height: 40px;
+	height: 8%;
 	margin: 0;
-	padding: 5px;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	width: 100%;
 }
@@ -29,7 +28,7 @@ form{
 .submit{
 	position: absolute;
 	right: 0px;
-	width: 10%;
+	width: 12%;
 	font-size: 20px;
 	height: 100%;
 	background-color: darkred;
@@ -38,7 +37,7 @@ form{
 }
 
 .text{
-	width: 90%;
+	width: 88%;
 	font-size: 20px;
 	border-color: black;
 }
@@ -79,9 +78,11 @@ form{
 .active_users{
 	float: right;
 	width: 12%;
-	padding-top: 45px;
-	position:right;
 	background-color: #d3d3d3;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 92%;
 }
 
 h2{
