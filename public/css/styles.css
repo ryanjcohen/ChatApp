@@ -3,12 +3,12 @@ h1{
 	text-align: center;
 	color: white;
 	font-family: Helvetica;
-	font-size: 35px;
-	height: 8%;
+	font-size: 6vh;
+	height: 8vh;
 	margin: 0;
 	position: fixed;
 	top: 0;
-	width: 100%;
+	width: 100vw;
 }
 
 html, body {
@@ -52,7 +52,7 @@ form{
 }
 
 .log{
-	padding-top: 40px;
+	padding-top: 8vh;
 	padding-bottom: 30px;
 	list-style: none;
 }
