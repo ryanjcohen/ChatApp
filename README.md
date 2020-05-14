@@ -6,13 +6,19 @@ Web application for real-time messaging between users built using Node.js, Expre
 (Must have Node.js and npm installed.)
 
 1. Download/clone repository
-<pre> $ git clone https://github.com/ryanjcohen/ChatApp.git
-$ cd ChatApp </pre>
+```
+$ git clone https://github.com/ryanjcohen/ChatApp.git
+$ cd ChatApp
+```
 
 2. Install dependencies
-<pre> $ npm install </pre>
+```
+$ npm install
+```
 
 3. Start application
-<pre> $ node server.js </pre>
+```
+$ node server.js
+```
 
 Application runs on localhost:8000.
